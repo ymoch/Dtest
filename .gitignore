@@ -26,3 +26,7 @@
 *.exe
 *.out
 *.app
+
+# For developing
+*.pro.user
+
