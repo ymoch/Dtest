@@ -26,6 +26,7 @@
 *.exe
 *.out
 *.app
+*.manifest
 
 # For developing
 *.pro.user

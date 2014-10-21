@@ -9,7 +9,6 @@
  */
 //==============================================================================
 #include <iostream>
-#include "gmock/gmock.h"
 #include "dtest/dtest.h"
 
 using ::dtest::Le;
@@ -27,7 +26,7 @@ int main()
     tester.SetDetailStream(&::std::cout);
     tester.SetUp();
 
-    tester.TestThat("TestName", 2, AllOf(Ge(1), Le(3)), "ADDITIONAL_MESSAGE");
+    tester.TestThat("TestName", 0, AllOf(Ge(1), Le(3)), "ADDITIONAL_MESSAGE");
 
     return 0;
 }
