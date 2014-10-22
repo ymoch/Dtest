@@ -11,6 +11,8 @@
 #ifndef INCLUDE_DTEST_INTERNAL_DTEST_UTILS_H
 #define INCLUDE_DTEST_INTERNAL_DTEST_UTILS_H
 
+namespace dtest {
+
 //==============================================================================
 /**
  * @brief   uncopyable interface
@@ -40,5 +42,7 @@ private:
      */
     Uncopyable& operator=(const Uncopyable&);
 };
+
+} // namespace dtest
 
 #endif // INCLUDE_DTEST_INTERNAL_DTEST_UTILS_H
