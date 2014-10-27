@@ -95,3 +95,9 @@ manager.TestThat("TestName", tested_variable, dtest::Eq(0));
 - 失敗するとログを出力します。
 - 第4引数に追加情報を含めることができます。"<<"演算子が定義されていれば、ユーザ定義のオブジェクトでも構いません。
 
+
+4. License
+-----------
+
+Dtest は MIT ライセンスに基づいています。詳細は LICENSE をご覧下さい。
+
