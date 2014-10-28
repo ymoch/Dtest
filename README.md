@@ -42,7 +42,7 @@ dtest::DtestManager manager;
 // set the output stream
 std::ofstream ofs("dtest_log.csv");
 manager.SetDetailStream(&ofs);
-manager.SetUp();
+manager.PrintHeader();
 
 // run (i.e.)
 for (auto it = container.begin(); it != container.end(); ++it) {
@@ -53,7 +53,7 @@ for (auto it = container.begin(); it != container.end(); ++it) {
 
 ### 2. Check output
 
-The content of output file "dtest_log" is like below.
+The content of output file "dtest_log.csv" is like below.
 
 ```
 TestName1,1,is == 0,AdditionalMessage

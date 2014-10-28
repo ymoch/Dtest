@@ -42,15 +42,15 @@ public:
     }
 
 private:
-    T1 head_matcher_;
-    VariadicMatcher$prev_n<Combiner, $tail> tail_matchers_;
+    T1 head_matcher_;   //!< head matcher
+    VariadicMatcher$prev_n<Combiner, $tail> tail_matchers_;  //!< tail matchers
 };
 
 //==============================================================================
 // definition of inline function (N = $n)
 //==============================================================================
 /**
- * @brief   operator << for VariadicMatcher
+ * @brief   operator << for VariadicMatcher$n
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
@@ -67,7 +67,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, $def_tail>
@@ -79,7 +78,6 @@ inline VariadicMatcher$n<AndCombiner, T1, $tail> AllOf(const T1& v1, $def_tail_a
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, $def_tail>

@@ -22,12 +22,12 @@ using ::dtest::AllOf;
  */
 int main()
 {
-    dtest::DtestManager tester;
-    tester.SetDetailStream(&::std::cout);
-    tester.SetUp();
+    dtest::DtestManager manager;
+    manager.SetDetailStream(&::std::cout);
+    manager.PrintHeader();
 
-    tester.TestThat("TestName", 0, AllOf(Ge(1), Le(3)), "ADDITIONAL_MESSAGE");
+    manager.TestThat("TestName", 0, AllOf(Ge(1), Le(3)), "ADDITIONAL_MESSAGE");
 
-    return 0;
+    return manager.IsSucceeded() ? 0 : 1;
 }
 

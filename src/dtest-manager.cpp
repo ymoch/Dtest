@@ -21,11 +21,12 @@ DtestManager::~DtestManager()
 {
 }
 
-void DtestManager::SetUp()
+void DtestManager::PrintHeader()
 {
-    if (detail_stream_) {
-        *detail_stream_ << "test-name,value,predicate,additional-info\n";
+    if (!detail_stream_) {
+        return;
     }
+    *detail_stream_ << "test-name,value,predicate,additional-info\n";
 }
 
 }   // namespace dtest

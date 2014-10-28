@@ -5,7 +5,7 @@
  * @brief   header of Dtest multi-value matchers automatically generated
  *
  * @author  generate-matcher-header.py
- * @date    2014-10-21  generate-matcher-header.py
+ * @date    2014-10-29  generate-matcher-header.py
  */
 //==============================================================================
 #ifndef INCLUDE_DTEST_DTEST_MATCHER_MULTI_GENERATED_H
@@ -55,7 +55,7 @@ public:
     }
 
 private:
-    Matcher matcher_;
+    Matcher matcher_;   //!< matcher
 };
 
 //==============================================================================
@@ -79,7 +79,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class Matcher>
@@ -91,7 +90,6 @@ inline VariadicMatcher1<AndCombiner, Matcher> AllOf(const Matcher& matcher)
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class Matcher>
@@ -144,15 +142,15 @@ public:
     }
 
 private:
-    T1 head_matcher_;
-    VariadicMatcher1<Combiner, T2> tail_matchers_;
+    T1 head_matcher_;   //!< head matcher
+    VariadicMatcher1<Combiner, T2> tail_matchers_;  //!< tail matchers
 };
 
 //==============================================================================
 // definition of inline function (N = 2)
 //==============================================================================
 /**
- * @brief   operator << for VariadicMatcher
+ * @brief   operator << for VariadicMatcher2
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
@@ -169,7 +167,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2>
@@ -181,7 +178,6 @@ inline VariadicMatcher2<AndCombiner, T1, T2> AllOf(const T1& v1, const T2& v2)
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2>
@@ -235,15 +231,15 @@ public:
     }
 
 private:
-    T1 head_matcher_;
-    VariadicMatcher2<Combiner, T2, T3> tail_matchers_;
+    T1 head_matcher_;   //!< head matcher
+    VariadicMatcher2<Combiner, T2, T3> tail_matchers_;  //!< tail matchers
 };
 
 //==============================================================================
 // definition of inline function (N = 3)
 //==============================================================================
 /**
- * @brief   operator << for VariadicMatcher
+ * @brief   operator << for VariadicMatcher3
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
@@ -260,7 +256,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3>
@@ -272,7 +267,6 @@ inline VariadicMatcher3<AndCombiner, T1, T2, T3> AllOf(const T1& v1, const T2& v
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3>
@@ -326,15 +320,15 @@ public:
     }
 
 private:
-    T1 head_matcher_;
-    VariadicMatcher3<Combiner, T2, T3, T4> tail_matchers_;
+    T1 head_matcher_;   //!< head matcher
+    VariadicMatcher3<Combiner, T2, T3, T4> tail_matchers_;  //!< tail matchers
 };
 
 //==============================================================================
 // definition of inline function (N = 4)
 //==============================================================================
 /**
- * @brief   operator << for VariadicMatcher
+ * @brief   operator << for VariadicMatcher4
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
@@ -351,7 +345,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4>
@@ -363,7 +356,6 @@ inline VariadicMatcher4<AndCombiner, T1, T2, T3, T4> AllOf(const T1& v1, const T
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4>
@@ -417,15 +409,15 @@ public:
     }
 
 private:
-    T1 head_matcher_;
-    VariadicMatcher4<Combiner, T2, T3, T4, T5> tail_matchers_;
+    T1 head_matcher_;   //!< head matcher
+    VariadicMatcher4<Combiner, T2, T3, T4, T5> tail_matchers_;  //!< tail matchers
 };
 
 //==============================================================================
 // definition of inline function (N = 5)
 //==============================================================================
 /**
- * @brief   operator << for VariadicMatcher
+ * @brief   operator << for VariadicMatcher5
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
@@ -442,7 +434,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5>
@@ -454,7 +445,6 @@ inline VariadicMatcher5<AndCombiner, T1, T2, T3, T4, T5> AllOf(const T1& v1, con
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5>
@@ -508,15 +498,15 @@ public:
     }
 
 private:
-    T1 head_matcher_;
-    VariadicMatcher5<Combiner, T2, T3, T4, T5, T6> tail_matchers_;
+    T1 head_matcher_;   //!< head matcher
+    VariadicMatcher5<Combiner, T2, T3, T4, T5, T6> tail_matchers_;  //!< tail matchers
 };
 
 //==============================================================================
 // definition of inline function (N = 6)
 //==============================================================================
 /**
- * @brief   operator << for VariadicMatcher
+ * @brief   operator << for VariadicMatcher6
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
@@ -533,7 +523,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5, class T6>
@@ -545,7 +534,6 @@ inline VariadicMatcher6<AndCombiner, T1, T2, T3, T4, T5, T6> AllOf(const T1& v1,
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5, class T6>
@@ -599,15 +587,15 @@ public:
     }
 
 private:
-    T1 head_matcher_;
-    VariadicMatcher6<Combiner, T2, T3, T4, T5, T6, T7> tail_matchers_;
+    T1 head_matcher_;   //!< head matcher
+    VariadicMatcher6<Combiner, T2, T3, T4, T5, T6, T7> tail_matchers_;  //!< tail matchers
 };
 
 //==============================================================================
 // definition of inline function (N = 7)
 //==============================================================================
 /**
- * @brief   operator << for VariadicMatcher
+ * @brief   operator << for VariadicMatcher7
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
@@ -624,7 +612,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5, class T6, class T7>
@@ -636,7 +623,6 @@ inline VariadicMatcher7<AndCombiner, T1, T2, T3, T4, T5, T6, T7> AllOf(const T1&
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5, class T6, class T7>
@@ -690,15 +676,15 @@ public:
     }
 
 private:
-    T1 head_matcher_;
-    VariadicMatcher7<Combiner, T2, T3, T4, T5, T6, T7, T8> tail_matchers_;
+    T1 head_matcher_;   //!< head matcher
+    VariadicMatcher7<Combiner, T2, T3, T4, T5, T6, T7, T8> tail_matchers_;  //!< tail matchers
 };
 
 //==============================================================================
 // definition of inline function (N = 8)
 //==============================================================================
 /**
- * @brief   operator << for VariadicMatcher
+ * @brief   operator << for VariadicMatcher8
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
@@ -715,7 +701,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8>
@@ -727,7 +712,6 @@ inline VariadicMatcher8<AndCombiner, T1, T2, T3, T4, T5, T6, T7, T8> AllOf(const
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8>
@@ -781,15 +765,15 @@ public:
     }
 
 private:
-    T1 head_matcher_;
-    VariadicMatcher8<Combiner, T2, T3, T4, T5, T6, T7, T8, T9> tail_matchers_;
+    T1 head_matcher_;   //!< head matcher
+    VariadicMatcher8<Combiner, T2, T3, T4, T5, T6, T7, T8, T9> tail_matchers_;  //!< tail matchers
 };
 
 //==============================================================================
 // definition of inline function (N = 9)
 //==============================================================================
 /**
- * @brief   operator << for VariadicMatcher
+ * @brief   operator << for VariadicMatcher9
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
@@ -806,7 +790,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9>
@@ -818,7 +801,6 @@ inline VariadicMatcher9<AndCombiner, T1, T2, T3, T4, T5, T6, T7, T8, T9> AllOf(c
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9>
@@ -872,15 +854,15 @@ public:
     }
 
 private:
-    T1 head_matcher_;
-    VariadicMatcher9<Combiner, T2, T3, T4, T5, T6, T7, T8, T9, T10> tail_matchers_;
+    T1 head_matcher_;   //!< head matcher
+    VariadicMatcher9<Combiner, T2, T3, T4, T5, T6, T7, T8, T9, T10> tail_matchers_;  //!< tail matchers
 };
 
 //==============================================================================
 // definition of inline function (N = 10)
 //==============================================================================
 /**
- * @brief   operator << for VariadicMatcher
+ * @brief   operator << for VariadicMatcher10
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
@@ -897,7 +879,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10>
@@ -909,7 +890,6 @@ inline VariadicMatcher10<AndCombiner, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> A
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10>

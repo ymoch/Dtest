@@ -42,9 +42,9 @@ public:
     void SetDetailStream(::std::ostream* os) { detail_stream_ = os; }
 
     /**
-     * @brief       set up the test
+     * @brief       print detail output header
      */
-    void SetUp();
+    void PrintHeader();
 
     /**
      * @brief       test by matcher

@@ -55,7 +55,7 @@ public:
     }
 
 private:
-    Matcher matcher_;
+    Matcher matcher_;   //!< matcher
 };
 
 //==============================================================================
@@ -79,7 +79,6 @@ inline ::std::ostream& operator<<(
 /**
  * @brief   create AND matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class Matcher>
@@ -91,7 +90,6 @@ inline VariadicMatcher1<AndCombiner, Matcher> AllOf(const Matcher& matcher)
 /**
  * @brief   create OR matcher
  *
- * @param[in]   value       value to be compared
  * @return      matcher
  */
 template <class Matcher>

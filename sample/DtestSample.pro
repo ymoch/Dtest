@@ -10,18 +10,9 @@ DEFINES         *=  _VARIADIC_MAX=10
 
 CONFIG(debug, debug|release) {
     TARGET                  =   DtestSampled
+    LIBS                    *=  -ldtestd
 } else {
     TARGET                  =   DtestSample
-}
-
-win32-msvc2012 {
-    CONFIG(debug, debug|release) {
-        LIBS                *=  -ldtestd
-    } else {
-        LIBS                *=  -ldtest
-    }
-}
-win32-g++|unix {
     LIBS                    *=  -ldtest
 }
 
