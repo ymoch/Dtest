@@ -33,7 +33,7 @@ Dtest is a library specialized to test data.
 3. Images
 ---------
 
-### 1. Coding tests
+### Coding tests
 
 ```c++
 // create test manager
@@ -51,7 +51,7 @@ for (auto it = container.begin(); it != container.end(); ++it) {
 }
 ```
 
-### 2. Check output
+### Check output
 
 The content of output file "dtest_log.csv" is like below.
 
