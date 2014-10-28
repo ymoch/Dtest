@@ -1,103 +1,69 @@
 Dtest
 ======
 
-Dtest は、データの単体検証をターゲットとした、テスト用ライブラリです。
+Dtest is a library specialized to test data.
 
-1. Background
+1. Features
 --------------
 
-ソフトウェアの開発には、テストが不可欠です。その中でも単体テストについては、多くの自動化ツールが開発・公開されており、C++で開発されたプロダクトについても、Google Test (https://code.google.com/p/googletest/) 等、単体テスト向けフレームワークが開発・公開されています。
+1. Simple component
 
-しかし、ソフトウェアが利用する「データ」に関する検証については、確立されたフレームワークが未だ存在しないように思います。そうなると、なんとなく単体テストと同じように作ってしまうか、もしくはフルスクラッチで作成するか、といった選択肢になってきます。
+  - Able to write complex tests with simple Dtest components.
 
-しかしながら、データの検証は、従来のテストと性質が異なる点がいくつかあります。なぜならば、データのテストでは、反復するデータに対して、順次チェックを行うからです。従来のテストと異なる点の例を挙げます。
+2. Highly-optimized assertion
 
+  - Most of Dtest assertions will be in-line-expanded and executed fast.
 
-### 1. 速度が重要視される
+3. Each assertion stands for an assertion
 
-データのテストでは、データが反復するという性質上、チェック一つ一つのパフォーマンスが極めて重要です。単体テストや機能テストでは、このようなループが少ないため、アサーションのパフォーマンスが多少悪くても問題になりませんが、データの検証では、その影響が大きくなります。
+  - Each assertion has a name, and this means "a test case".
 
+4. Each assertion returns its result
 
-### 2. テストケースの成否だけ判定すれば満足というわけではない
+  - Able to control testing flows freely with results of tests.
 
-単体テストや機能テストでは、個々のテストケースの成否を判定すれば、それで満足でした。しかしデータの場合は、同じチェックを何度も行います。従って、従来のテストのような「成否だけの判定」では、1回だけ失敗したのか、全部失敗したのか、といった情報が欠落してしまいます。また、何をもって「テストケース」と呼ぶのか、についても再考の余地があります。
+5. Written with predicates
 
+  - To make finding the meaning of each test easy.
 
-### 3. テストも一つのソフトウェアとして扱われる
+6. Output expressed in CSV format
 
-データのテストでは、前述のようにループを行うため、処理が従来のテストコードより複雑になります。また、あらゆるデータに対して、繰り返しテストを実施することが求められます。そのためデータテストは、一つのソフトウェアとしてきちんと設計されなければなりません。
+  - To make analysing results easy.
 
-
-このように、データのテストは従来のテストとは異なる扱いが必要です。Dtest は、このようなデータ検証に役立つ環境を提供します。
-
-
-2. Features
---------------
-
-Dtest は、一般的な単体テストフレームワーク等によくあるアサーションライブラリですが、下記のような特徴があります。
-
-
-### 1. シンプルなコンポーネント
-
-Dtest は、フレームワークというよりは、単なるコンポーネントです。なぜこのような設計にしたかというと、テストの処理の流れはデータの構造によって非常に多様となるからです。
-
-
-### 2. アサーションを最適化
-
-高速に動作するような設計となっています。静的に展開されるような工夫を徹底的に施し、動作もシンプルです。
-
-
-### 3. アサーション = テストケース
-
-各アサーションに名前をつけます。これがテストケースの扱いとなります。
-
-
-### 4. アサーションの結果を返却値として利用できる
-
-地味ですが非常に重要です。なぜならば、データのテストソフトウェアを開発するにあたり、テストの結果により処理を切り替えるという需要が生じるからです。
-
-
-### 5. テストは述語記述
-
-アサーションの条件設定は、JUnit や Google Test 等で採用されている、AssertThat の述語記法に (今のところ) 統一しています。テストの可読性を上げる上で、役に立つでしょう。
-
-
-### 6. 結果はCSV形式で出力する
-
-データテストの結果も、一つのデータです。これを解析しやすくするために、CSV形式のテスト失敗ログを出力します。もちろんファイル出力もできます。
-
-
-3. Usage
+3. Images
 ---------
 
-### 1. テストマネージャを生成
+### 1. Coding tests
 
 ```c++
+// create test manager
 dtest::DtestManager manager;
-```
 
-### 2. 出力ストリームを設定
-
-```c++
+// set the output stream
 std::ofstream ofs("dtest_log.csv");
 manager.SetDetailStream(&ofs);
 manager.SetUp();
+
+// run (i.e.)
+for (auto it = container.begin(); it != container.end(); ++it) {
+  manager.TestThat("TestName1", it->value1, dtest::Eq(0), "AdditionalMessage");
+  manager.TestThat("TestName2", it->value2, dtest::AllOf(dtest::Gt(1), dtest::Lt(5)));
+}
 ```
 
-- 設定しない場合、何も出力されません。
+### 2. Check output
 
-### 3. テストを実行
+The content of output file "dtest_log" is like below.
 
-```c++
-manager.TestThat("TestName", tested_variable, dtest::Eq(0));
 ```
-
-- 失敗するとログを出力します。
-- 第4引数に追加情報を含めることができます。"<<"演算子が定義されていれば、ユーザ定義のオブジェクトでも構いません。
+TestName1,1,is == 0,AdditionalMessage
+TestName2,0,(is > 1) and (is < 5),
+TestName1,2,is == 0,AdditionalMessage
+```
 
 
 4. License
 -----------
 
-Dtest は MIT ライセンスに基づいています。詳細は LICENSE をご覧下さい。
+Dtest is released under the MIT License, see LICENSE.
 
