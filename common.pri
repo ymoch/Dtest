@@ -18,11 +18,16 @@ win32-msvc2012 {
     QMAKE_CXXFLAGS_DEBUG    -=  -MDd
     QMAKE_CXXFLAGS_DEBUG    *=  -MTd
 }
-win32-g++|unix {
-    DEFINES                 *=  _DTEST_VARIADIC_TEMPLATE
+win32-g++ {
     QMAKE_CFLAGS_RELEASE    -=  -O1 -O2
     QMAKE_CFLAGS_RELEASE    *=  -O3
     QMAKE_CXXFLAGS_RELEASE  -=  -O1 -O2
     QMAKE_CXXFLAGS_RELEASE  *=  -O3
     QMAKE_LFLAGS            *=  -static -static-libgcc -static-libstdc++
+}
+unix {
+    QMAKE_CFLAGS_RELEASE    -=  -O1 -O2
+    QMAKE_CFLAGS_RELEASE    *=  -O3
+    QMAKE_CXXFLAGS_RELEASE  -=  -O1 -O2
+    QMAKE_CXXFLAGS_RELEASE  *=  -O3
 }

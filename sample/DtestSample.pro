@@ -6,14 +6,17 @@ LIBS            *=  -L$$PWD/../bin
 INCLUDEPATH     *=  $$PWD/etc $$PWD/../include
 DESTDIR         =   $$PWD/bin
 
-DEFINES         *=  _VARIADIC_MAX=10
+win32-g++|unix {
+    DEFINES             *=  _DTEST_VARIADIC_TEMPLATE
+}
+
 
 CONFIG(debug, debug|release) {
-    TARGET                  =   DtestSampled
-    LIBS                    *=  -ldtestd
+    TARGET              =   DtestSampled
+    LIBS                *=  -ldtestd
 } else {
-    TARGET                  =   DtestSample
-    LIBS                    *=  -ldtest
+    TARGET              =   DtestSample
+    LIBS                *=  -ldtest
 }
 
 SOURCES += \
