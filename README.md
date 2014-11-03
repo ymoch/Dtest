@@ -3,6 +3,7 @@ Dtest
 
 Dtest is a library specialized to test data.
 
+
 1. Features
 --------------
 
@@ -30,7 +31,12 @@ Dtest is a library specialized to test data.
 
   - To make analysing results easy.
 
-3. Images
+7. Headers only
+
+  - Easy to use.
+
+
+2. Images
 ---------
 
 ### Coding tests
@@ -62,7 +68,7 @@ TestName1,2,is == 0,AdditionalMessage
 ```
 
 
-4. License
+3. License
 -----------
 
 Dtest is released under the MIT License, see LICENSE.
