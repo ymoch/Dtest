@@ -1,0 +1,102 @@
+//==============================================================================
+/**
+ * @file    dtest/dtest-manager-tuple-generated.h
+ *
+ * @brief   header of DtestManagerTuple
+ *
+ * @author  ymoch
+ * @date    2014-11-01  ymoch
+ */
+//==============================================================================
+#ifndef INCLUDE_DTEST_DTEST_MANAGER_TUPLE_GENERATED_H
+#define INCLUDE_DTEST_DTEST_MANAGER_TUPLE_GENERATED_H
+
+#include "dtest-manager-base.h"
+
+namespace dtest {
+
+//==============================================================================
+/**
+ * @brief   dtest manager implemented by tuple
+ */
+//==============================================================================
+class DtestManagerTuple : public DtestManagerBase
+{
+public:
+    /**
+     * @brief       default constructor
+     */
+    DtestManagerTuple() : DtestManagerBase() {}
+
+    /**
+     * @brief       destructor
+     */
+    ~DtestManagerTuple() {}
+
+$range tuple_num 0..20
+$for tuple_num [[
+
+$range all 1..tuple_num
+
+    /**
+     * @brief       execute test
+     * 
+     * @tparam      Value       tested value type
+     * @tparam      Matcher     matcher type
+     *                          Required to be implemented:
+     *                          - bool Matches(Value)
+     *                          - ::std::ostream& operator<<(
+     *                                ::std::ostream, const Matcher&)
+     * @tparam      T*          log type
+     *                          Required to be implemented:
+     *                          - ::std::ostream& operator<<(
+     *                                ::std::ostream, const Matcher&)
+     *
+     * @param[in]   test_name   test name
+     * @param[in]   value       tested value
+     * @param[in]   matcher     matcher
+     * @param[in]   log*        logs
+     *
+     * @retval      true        test succeeded
+     * @retval      false       test failed
+     */
+    template <class Value, class Matcher$for all [[, class T$all]]>
+    bool TestThat(
+            const char* const test_name, const Value& value, const Matcher& matcher$for all [[, const T$all& log$all]])
+    {
+        const bool result = matcher.Matches(value);
+        if (!result) {
+            if (detail_stream_ != NULL) {
+                PrintCommonLog(test_name, value, matcher);
+                $if tuple_num > 0 [[*detail_stream_ $for all  [[<< log$all]];]]
+
+                EndLog();
+            }
+            is_succeeded_ = false;
+        }
+        return result;
+    }
+
+]]
+
+private:
+    template <class Value, class Matcher>
+    void PrintCommonLog(
+            const char* const test_name,
+            const Value& value,
+            const Matcher& matcher)
+    {
+        *detail_stream_ << test_name << ','
+                        << value << ','
+                        << matcher << ',';
+    }
+
+    void EndLog()
+    {
+        *detail_stream_ << '\n';
+    }
+};
+
+} // namespace dtest
+
+#endif // INCLUDE_DTEST_DTEST_MANAGER_TUPLE_GENERATED_H

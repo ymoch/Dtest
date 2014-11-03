@@ -1,15 +1,15 @@
 //==============================================================================
 /**
- * @file    dtest/dtest-matcher-multi-generated.h
+ * @file    dtest/dtest-matcher-multi-tuple-generated.h
  *
- * @brief   header of Dtest multi-value matchers automatically generated
+ * @brief   header of Dtest multi-value matchers implemented by tuple
  *
  * @author  ymoch
- * @date    2014/11/01
+ * @date    2014-11-01  ymoch
  */
 //==============================================================================
-#ifndef INCLUDE_DTEST_DTEST_MATCHER_MULTI_GENERATED_H
-#define INCLUDE_DTEST_DTEST_MATCHER_MULTI_GENERATED_H
+#ifndef INCLUDE_DTEST_DTEST_MATCHER_MULTI_TUPLE_GENERATED_H
+#define INCLUDE_DTEST_DTEST_MATCHER_MULTI_TUPLE_GENERATED_H
 
 #include "internal/dtest-combiners.h"
 
@@ -17,17 +17,17 @@ namespace dtest {
 
 //==============================================================================
 /**
- * @brief   variadic matcher (N = 1)
+ * @brief   tuple matcher (N = 1)
  */
 //==============================================================================
 template <class Combiner, class T1>
-class VariadicMatcher1
+class TupleMatcher1
 {
 public:
     /**
      * @brief       constructor
      */
-    VariadicMatcher1(const T1& matcher)
+    TupleMatcher1(const T1& matcher)
         : matcher_(matcher) {}
 
     /**
@@ -59,32 +59,32 @@ private:
 };
 
 $$ settings
-$var variadic_min = 1
-$var variadic_max = 10
-$var variadic_class_min = 2
+$var tuple_min = 1
+$var tuple_max = 10
+$var tuple_class_min = 2
 
-$range variadic_num variadic_min..variadic_max
-$range variadic_class_num variadic_class_min..variadic_max
+$range tuple_num tuple_min..tuple_max
+$range tuple_class_num tuple_class_min..tuple_max
 
-$$ variadic matcher
-$for variadic_class_num [[
+$$ tuple matcher
+$for tuple_class_num [[
 
-$range all 1..variadic_class_num
-$range tail 2..variadic_class_num
+$range all 1..tuple_class_num
+$range tail 2..tuple_class_num
 
 //==============================================================================
 /**
- * @brief   variadic matcher (N = $variadic_class_num)
+ * @brief   tuple matcher (N = $tuple_class_num)
  */
 //==============================================================================
 template <class Combiner, $for all, [[class T$all]]>
-class VariadicMatcher$variadic_class_num
+class TupleMatcher$tuple_class_num
 {
 public:
     /**
      * @brief       constructor
      */
-    VariadicMatcher$variadic_class_num($for all, [[const T$all& m$all]])
+    TupleMatcher$tuple_class_num($for all, [[const T$all& m$all]])
         : head_matcher_(m1), tail_matchers_($for tail, [[m$tail]]) {}
 
     /**
@@ -124,27 +124,27 @@ private:
     /**
      * @brief       tail matchers
      */
-    VariadicMatcher$(variadic_class_num - 1)<Combiner, $for tail, [[T$tail]]> tail_matchers_;
+    TupleMatcher$(tuple_class_num - 1)<Combiner, $for tail, [[T$tail]]> tail_matchers_;
 };
 
-]] $$ variadic matcher
+]] $$ tuple matcher
 
 //==============================================================================
 // definition of inline function
 //==============================================================================
 $$ output stream iterator
-$for variadic_num [[
+$for tuple_num [[
 
-$range all 1..variadic_num
+$range all 1..tuple_num
 
 /**
- * @brief           operator << for VariadicMatcher$variadic_num
+ * @brief           operator << for TupleMatcher$tuple_num
  *
  * @param[in,out]   os          output stream
  * @param[in]       matcher     matcher
  */
 template <class Combiner, $for all, [[class T$all]]>
-inline ::std::ostream& operator<<(::std::ostream& os, const VariadicMatcher$variadic_num<Combiner, $for all, [[T$all]]>& matcher)
+inline ::std::ostream& operator<<(::std::ostream& os, const TupleMatcher$tuple_num<Combiner, $for all, [[T$all]]>& matcher)
 {
     matcher.DescribeTo(&os);
     return os;
@@ -153,9 +153,9 @@ inline ::std::ostream& operator<<(::std::ostream& os, const VariadicMatcher$vari
 ]] $$ output stream iterator
 
 $$ and matcher
-$for variadic_num [[
+$for tuple_num [[
 
-$range all 1..variadic_num
+$range all 1..tuple_num
 
 /**
  * @brief       create AND matcher
@@ -163,17 +163,17 @@ $range all 1..variadic_num
  * @return      matcher
  */
 template <$for all, [[class T$all]]>
-inline VariadicMatcher$variadic_num<AndCombiner, $for all, [[T$all]]> AllOf($for all, [[const T$all& m$all]])
+inline TupleMatcher$tuple_num<AndCombiner, $for all, [[T$all]]> AllOf($for all, [[const T$all& m$all]])
 {
-    return VariadicMatcher$variadic_num<AndCombiner, $for all, [[T$all]]>($for all, [[m$all]]);
+    return TupleMatcher$tuple_num<AndCombiner, $for all, [[T$all]]>($for all, [[m$all]]);
 }
 
 ]] $$ and matcher
 
 $$ or matcher
-$for variadic_num [[
+$for tuple_num [[
 
-$range all 1..variadic_num
+$range all 1..tuple_num
 
 /**
  * @brief       create OR matcher
@@ -181,13 +181,13 @@ $range all 1..variadic_num
  * @return      matcher
  */
 template <$for all, [[class T$all]]>
-inline VariadicMatcher$variadic_num<OrCombiner, $for all, [[T$all]]> AnyOf($for all, [[const T$all& m$all]])
+inline TupleMatcher$tuple_num<OrCombiner, $for all, [[T$all]]> AnyOf($for all, [[const T$all& m$all]])
 {
-    return VariadicMatcher$variadic_num<OrCombiner, $for all, [[T$all]]>($for all, [[m$all]]);
+    return TupleMatcher$tuple_num<OrCombiner, $for all, [[T$all]]>($for all, [[m$all]]);
 }
 
 ]] $$ or matcher
 
 } // namespace dtest
 
-#endif // INCLUDE_DTEST_DTEST_MATCHER_MULTI_GENERATED_H
+#endif // INCLUDE_DTEST_DTEST_MATCHER_MULTI_TUPLE_GENERATED_H

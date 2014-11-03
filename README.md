@@ -41,7 +41,7 @@ dtest::DtestManager manager;
 
 // set the output stream
 std::ofstream ofs("dtest_log.csv");
-manager.SetDetailStream(&ofs);
+manager.SetOutputStream(&ofs);
 manager.PrintHeader();
 
 // run (i.e.)

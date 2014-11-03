@@ -23,7 +23,7 @@ using ::dtest::AllOf;
 int main()
 {
     dtest::DtestManager manager;
-    manager.SetDetailStream(&::std::cout);
+    manager.SetOutputStream(&::std::cout);
     manager.PrintHeader();
 
     manager.TestThat("TestName", 0, AllOf(Ge(1), Le(3)), "ADDITIONAL_MESSAGE");

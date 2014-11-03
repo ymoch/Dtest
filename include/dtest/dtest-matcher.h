@@ -15,7 +15,7 @@
 #ifdef _DTEST_VARIADIC_TEMPLATE
 #   include "dtest-matcher-multi-variadic-template.h"
 #else
-#   include "dtest-matcher-multi-generated.h"
+#   include "dtest-matcher-multi-tuple-generated.h"
 #endif
 
 #endif // INCLUDE_DTEST_DTEST_MATCHER_H
